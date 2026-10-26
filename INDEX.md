@@ -43,6 +43,8 @@
 *Active research threads and completed work.*
 
 - [Active Projects](projects/active.md) — current efforts, owners, status
+- [Timeline & Milestones](projects/timeline.md) — year-by-year milestones and critical path
+- [Current Priorities](projects/priorities.md) — what matters most right now
 - [Completed Projects](projects/completed.md) — finished work and outcomes
 - [Decision Log](projects/decisions/) — why we chose X over Y
 
