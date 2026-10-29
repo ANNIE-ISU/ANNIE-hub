@@ -11,6 +11,12 @@ sources:
     type: dissertation
     institution: "Univ. Mainz"
     notes: "Chapter 3 primary source for detector geometry and subsystem specs; Chapter 4 for subsystem efficiencies"
+  - author: "He"
+    year: 2024
+    type: dissertation
+    institution: "UC Davis"
+    advisor: "Svoboda"
+    notes: "Chapter 3 cross-checks geometry; Fig. 3.17 gives BNB peak energy ~700 MeV (supersedes Nieslony ~800 MeV)"
 ---
 
 ## What ANNIE Is
@@ -90,7 +96,7 @@ Measured in-situ using through-going muon tracks (Nieslony 2022, Chapter 4).
 | Bunch structure | 81 of 84 Booster bunches filled; bunches 2 ns wide, 19 ns apart |
 | Spill duration | ~1.6 μs |
 | Beam composition (ν-mode) | 93.6% νμ, 5.86% ν̄μ, 0.52% νe, 0.05% ν̄e |
-| Peak νμ energy | ~800 MeV |
+| Peak νμ energy | ~700 MeV |  <!-- He 2024 Fig. 3.17; supersedes Nieslony ~800 MeV -->
 
 ---
 

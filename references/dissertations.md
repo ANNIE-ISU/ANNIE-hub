@@ -19,7 +19,7 @@ This file indexes all PhD dissertations and Master's theses that contribute to t
 | Author | Year | Institution | Title (abbreviated) | Key Topics | Authority Notes |
 |--------|------|-------------|---------------------|------------|-----------------|
 | Nieslony | 2022 | Univ. Mainz | *Towards a neutron multiplicity measurement with ANNIE* | Detector subsystems (Ch. 3), MRD/FMV efficiencies (Ch. 4), Simulation validation (Ch. 5), Neutron multiplicity (Ch. 6), DSNB study (Ch. 7), WbLS energy reconstruction (Ch. 8) | Most recent Phase II detector description; primary source for neutron multiplicity, efficiency measurements, simulation validation methodology |
-| He | TBD | TBD | *(pending ingestion)* | Foundational detector setup, early Phase I | One of earliest theses; canonical for foundational design decisions and Phase I context |
+| He | 2024 | UC Davis | *Neutron Multiplicity Measurement in the ANNIE Detector* | Detector overview Ch.3 (PMT inventory, FMV/MRD, BNB beam, Gd loading, triggers, ToolAnalysis); LAPPD hardware Ch.4; Neutron multiplicity analysis Ch.6 (ring-edge vertex, RNN, Bethe-Bloch energy, neutron cuts, AmBe efficiency, Table 6.1) | **Supersedes Nieslony 2022** on all overlapping factual/technical details (temporal authority: newer wins); advisor: Svoboda |
 
 ---
 
@@ -43,4 +43,4 @@ sources:
 ## Ingestion Notes
 
 - Nieslony 2022 was ingested in full (10 chapter PDFs) in October 2026. All chapter-level extractions are logged in the wiki articles they sourced.
-- He thesis: pending upload and ingestion.
+- He 2024 (Julie He, UC Davis, advisor Svoboda): Chapters 3, 4, and 6 ingested October 2026. Ch.3 → detector subsystem articles; Ch.6 → neutrino-interactions.md with methods and Table 6.1 results. Ch.4 (LAPPD hardware) pending full wiki article.

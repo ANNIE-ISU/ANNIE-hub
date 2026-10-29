@@ -11,6 +11,12 @@ sources:
     type: dissertation
     institution: "Univ. Mainz"
     notes: "Chapter 3 primary source for PMT and LAPPD specs"
+  - author: "He"
+    year: 2024
+    type: dissertation
+    institution: "UC Davis"
+    advisor: "Svoboda"
+    notes: "Table 3.2 gives model-level PMT inventory; supersedes Nieslony on total count discrepancy"
 ---
 
 ## What This Is
@@ -21,18 +27,20 @@ ANNIE uses a hybrid photon detection system combining conventional PMTs and Larg
 
 ## Conventional PMTs
 
-### Summary (Phase II, 2021 data-taking period)
+### Inventory (Phase II — He 2024 Table 3.2)
 
-| Location | Model | Count | Notes |
-|----------|-------|-------|-------|
-| Bottom | Hamamatsu 10" (from LUX experiment) | 10 | Recycled from LUX |
-| Top (subset) | ETEL 11" HQE | 20 | High Quantum Efficiency variant |
-| Side barrel | Hamamatsu 8" (new) | 40 | Newly procured for ANNIE |
-| Side barrel | Hamamatsu 10" (from WATCHBOY) | 40 | Recycled from WATCHBOY |
-| Side barrel | ETEL 10" HQE (from WATCHMAN) | 4 | Recycled from WATCHMAN |
-| **Total** | | **132** | |
+| Batch name | Model | Diameter | Count |
+|------------|-------|----------|-------|
+| ANNIE | Hamamatsu R5912-100 | 8″ | 44 |
+| WATCHBOY | Hamamatsu R7081 | 10″ | 48 |
+| WATCHMAN | Hamamatsu R7081-100 | 10″ | 4 |
+| LUX | Hamamatsu R7081 | 10″ | 20 |
+| ETEL | ETEL D784UKFLB | 11″ | 20 |
+| **Table total** | | | **136** |
 
-*Note: Several small PMTs on the outside of the Inner Structure were implemented in the simulation for cosmic-veto purposes but are not part of the constructed ANNIE detector.*
+> **Count discrepancy:** He Table 3.2 sums to 136 PMTs, but the dissertation text (§3.2.6) states 132 PMTs are installed for Phase II. The difference of 4 is unresolved in the source; the table total is preserved here for traceability. Use 132 as the canonical installed count until clarified.
+
+*Note: Several small PMTs on the outside of the Inner Structure were implemented in the WCSim simulation for cosmic-veto purposes but are not part of the constructed ANNIE detector.*
 
 ### High Voltage
 
