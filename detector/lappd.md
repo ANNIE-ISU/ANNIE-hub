@@ -7,9 +7,10 @@ links_to:
   - detector/trigger-system.md
   - software/toolanalysis.md
   - physics/neutrino-interactions.md
-last_updated: "2026-10-28"
+last_updated: "2026-10-29"
 sources:
   - "He, Julie. LAPPD Integration in ANNIE. UC Davis PhD Dissertation, 2024. Ch. 4."
+  - "He, Julie. LAPPD Integration in ANNIE. UC Davis PhD Dissertation, 2024. Appendices A–B."
 ---
 
 # LAPPD (Large Area Picosecond PhotoDetector)
@@ -270,6 +271,66 @@ The ~3× improvement in vertex resolution is the primary physics motivation for 
 - **Muon ring reconstruction** — tighter Cherenkov ring edge determination
 
 ---
+
+
+---
+
+## Engineering History
+
+### LVHV Board: Version 1 → Version 2
+
+The first LVHV board revision encountered multiple issues during bench and system testing. The following table documents every known problem and the solution implemented for v2 (He 2024, Table A.1):
+
+| Issue | Solution |
+|---|---|
+| Linear regulator chip damaged by bad power supply | UV/OV protection circuit on input voltage |
+| No HV read-back | HV read-back circuit added |
+| No HV protection on relay | Flyback diode installed |
+| Voltage gaps (photocathode↔MCP, MCP↔MCP) could exceed set limits | Zener diodes to clamp voltage gaps |
+| LV outputs (+3.3 V, +2.5 V, +1.8 V) too low at ACDC | Increased to +3.8 V, +3.0 V, +1.8 V |
+| LVHV communicating with trigger card via SPI (wrong protocol) | Switched to I²C; pull lines to +3.3 V (not +5 V) |
+| No dedicated power supply for trigger card | +3.3 V utility rail added |
+| RHT sensor interfering with I²C bus | Switched to SPI version of RHT sensor |
+| Two RHT sensors with same I²C address | Removed second RHT sensor |
+| Ground path drifts on LVDS pair (beam gate, PPS, clock) | AC-coupled LVDS line for these signals |
+
+After v2 was fabricated, additional in-field issues required further fixes (He 2024, Table A.2):
+
+| Issue | Fix |
+|---|---|
+| CAN bus lines swapped (mislabeling) | Re-labeled |
+| Incorrect linear regulator for trigger card (+1.8 V instead of +3.3 V) | Replace with `ADP7158ARDZ-3.3` |
+| UV/OV protection window too narrow → operating LVHV too close to limits | New programming resistors: R202 = 1 MΩ, R206 = 263.8 kΩ, R207 = 36.2 kΩ |
+| HV read-back incorrect (at 2,500 V, divider outputs 0.36 V; expected 2.5 V; HV ÷ 500 not matching) | Replace with correct programming resistors |
+| HV readings drop intermittently: floating SHDN pin 5 on U506 (ADM8828) causes −5 V output to go to 0 V | Ground pin 5 to pin 4 (GND) with solder |
+| Zener diodes (75 V / 150 V / 75 V) prevent reaching 200 V MCP gap voltages | Replace with higher-voltage-rated zeners |
+| 3V8 rail outputs 4.20 V (too high) | Replace R401 with 34 kΩ resistor |
+| U203 labeled 3.3 V but loaded with 1.8 V part (copy-paste error in schematics) | Replace U203 LR with 2.5 V LR |
+| AC-coupled beam gate path not working | Switch beam gate coupling to DC |
+
+### ACDC Board Modifications
+
+Standard ACDC boards are designed for open test-stand use, not the compact dark environment of the watertight housing:
+- **RJ45 jacks** were too tall to fit inside the housing → low-profile jacks selected
+- **Status LEDs** were removed — they introduce stray light that contaminates the LAPPD photocathode
+- **ACDC–LVHV power connector mismatch** → interface wires converted to terminal blocks
+- Some **linear regulators** replaced to match the v2 LVHV power scheme
+
+### Watertight Housing Modifications
+
+- One **plastic nub** on the housing interior sat directly under the EMCO HV module on the LVHV board, preventing the board from sitting flush → nub was cut off. Future housing fabrications should omit this nub if the LVHV board layout is unchanged.
+- The original waterproof connectors had different threading and socket diameter than the final MacArtney SubConn 13-pin specification → Julie He and David Hemer designed circular PVC plugs with the correct dimensions, machined them, and glued them to the housing frame with PVC cement.
+
+### Waterproof Cable Re-Splicing
+
+The original MacArtney SubConn **12-pin** circular connectors left a 1–2 ft section of straight (untwisted) wire at the cable exit — a serious problem for LVDS differential pairs, which must be twisted to maintain signal integrity. Untwisted pairs caused the ACC's LVDS signals to be misread by the ACDC boards.
+
+**Solution**: replaced all connectors with MacArtney SubConn **13-pin** Ethernet circular connectors, which maintain the twisted-pair geometry to the termination point.
+
+The ten LAPPD cables had already been spliced and terminated at the wet (tank) end before shipment to Fermilab, requiring re-splicing at Fermilab. Lessons learned during re-splicing:
+- Solder butt connections were initially used but proved unreliable (came loose under mechanical stress) → switched to **crimp connectors**
+- **Plastic zip-tie splints** (thick, industrial grade) added across each splice to prevent the cable from bending sharply at the joint — reduces the risk of un-crimping under repeated flexion
+- **Heat-shrink tubing** placed over the completed splice for waterproofing
 
 ## See Also
 
