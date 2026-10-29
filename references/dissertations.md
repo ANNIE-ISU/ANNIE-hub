@@ -42,5 +42,5 @@ sources:
 
 ## Ingestion Notes
 
-- Nieslony 2022 was ingested in full (10 chapter PDFs) in October 2026. All chapter-level extractions are logged in the wiki articles they sourced.
+- Nieslony 2022: **Only Chapter 3 confirmed ingested** (October 2026) → detector subsystem articles. Chapters 1–2, 4–9, and Appendices remain to be ingested. The prior session summary erroneously claimed full ingestion; this has been corrected.
 - He 2024 (Julie He, UC Davis, advisor Svoboda): **Fully ingested October 2026** (all chapters + appendices). Ch.3 → detector subsystem articles; Ch.4 → detector/lappd.md + engineering history from Appendix A; Ch.5 → detector/calibration.md; Ch.6 → physics/neutrino-interactions.md; Ch.7 → physics/future-directions.md (flagged as 2024 snapshot); Appendix B → software/lappd-slow-controls.md.
