@@ -2,32 +2,83 @@
 
 **Domain:** Detector  
 **Links to:** [Detector Overview](overview.md) · [Water Cherenkov System](water-cherenkov-detector.md) · [DAQ System](../software/daq-system.md)  
-**Last updated:** 2026-10-26
+**Last updated:** 2026-10-28
 
+---
+sources:
+  - author: "Nieslony"
+    year: 2022
+    type: dissertation
+    institution: "Univ. Mainz"
+    notes: "Chapter 3 primary source for PMT and LAPPD specs"
 ---
 
 ## What This Is
 
-ANNIE uses a hybrid photon detection system combining conventional PMTs and Large Area Picosecond Photodetectors (LAPPDs). This combination provides both coverage and precision timing.
-
-## LAPPDs
-
-LAPPDs are large-format (nominally 20×20 cm active area) microchannel plate photodetectors capable of ~100 ps single-photon timing resolution. The Iowa State group (Wetstein lab) has been central to LAPPD development and deployment.
-
-*[Fill in: number of LAPPDs deployed, positions, current operational status, known issues.]*
-
-## Conventional PMTs
-
-*[Fill in: PMT model(s), count, arrangement, quantum efficiency, gain settings.]*
-
-## Geometry
-
-*[Fill in: 3D arrangement of all photodetectors, coordinate system definition, reference drawing or link.]*
-
-## Calibration
-
-*[Fill in: calibration sources, frequency, responsible person, current calibration status.]*
+ANNIE uses a hybrid photon detection system combining conventional PMTs and Large-Area Picosecond PhotoDetectors (LAPPDs). The conventional PMTs provide full-volume coverage; LAPPDs provide sub-centimetre spatial resolution and sub-100 ps timing on specific detector faces.
 
 ---
 
-*Related: [DAQ System](../software/daq-system.md) for how signals are read out.*
+## Conventional PMTs
+
+### Summary (Phase II, 2021 data-taking period)
+
+| Location | Model | Count | Notes |
+|----------|-------|-------|-------|
+| Bottom | Hamamatsu 10" (from LUX experiment) | 10 | Recycled from LUX |
+| Top (subset) | ETEL 11" HQE | 20 | High Quantum Efficiency variant |
+| Side barrel | Hamamatsu 8" (new) | 40 | Newly procured for ANNIE |
+| Side barrel | Hamamatsu 10" (from WATCHBOY) | 40 | Recycled from WATCHBOY |
+| Side barrel | ETEL 10" HQE (from WATCHMAN) | 4 | Recycled from WATCHMAN |
+| **Total** | | **132** | |
+
+*Note: Several small PMTs on the outside of the Inner Structure were implemented in the simulation for cosmic-veto purposes but are not part of the constructed ANNIE detector.*
+
+### High Voltage
+
+PMTs are biased at approximately 2 kV from CAEN Model 1734P HV modules housed in a CAEN SY527 mainframe. A dedicated pick-off box, designed at Iowa State University, routes HV to individual PMT channels.
+
+### Electronics / Readout
+
+PMT signals are digitised by 500 MHz Flash ADCs (FADCs) in VME crates. The beam trigger opens a 2 μs acquisition window coinciding with the BNB spill; an extended 70 μs window captures delayed neutron captures on Gd (neutron thermalisation time ~20–30 μs in 0.2% Gd-water).
+
+---
+
+## LAPPDs
+
+### Technology Summary
+
+LAPPDs are 20 cm × 20 cm × <1 cm planar microchannel-plate photodetectors manufactured by INCOM, Inc. Key performance specifications:
+
+| Parameter | Value |
+|-----------|-------|
+| Active area | 20 cm × 20 cm |
+| Thickness | < 1 cm |
+| Single-photon timing resolution | < 100 ps (transit time spread) |
+| Position resolution | < 1 cm |
+| Gain | > 10⁷ |
+
+### Deployment in ANNIE
+
+- **Planned complement:** 5 LAPPDs for Phase II physics running
+- **First deployment:** March 2022 (initial commissioning)
+- **Placement:** Inserted vertically through "mailbox" slots in the tank lid into designated columns on the Inner Structure. Each column accommodates up to 2 LAPPDs stacked vertically; 8 columns are available, for a maximum of 24 LAPPD positions total.
+- **Orientation:** Facing inward into the water volume
+
+### Current Operational Status
+
+*[Update with current LAPPD count and operational status as of 2026.]*
+
+---
+
+## Inner Structure
+
+The Inner Structure is an octagonal steel frame inside the cylindrical tank that mounts the PMTs and provides the LAPPD insertion columns. It is wrapped in Teflon for optical reflectivity and optically isolated from the outer tank wall by a black plastic liner. The geometry of the Inner Structure is implemented in the WCSim simulation from original CAD drawings.
+
+---
+
+## Geometry Reference
+
+In WCSim, the coordinate origin is centred on the FMV; the water tank centre is at coordinates (0, −14.45, 168.1) cm relative to this origin.
+
+*See also: [DAQ System](../software/daq-system.md) for signal readout details.*
